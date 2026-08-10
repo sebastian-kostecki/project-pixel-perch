@@ -99,19 +99,26 @@ const skillCategories = [
 
 function SkillsPage() {
   return (
-    <div className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <p className="font-mono text-sm text-primary">$ ls skills/</p>
+    <div className="relative">
+      <div aria-hidden="true" className="gradient-hero absolute inset-x-0 top-0 h-80" />
+      <div className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
         <SectionHeading
+          index="03 / Skills"
           title="Skills & Tools"
           subtitle="The stack I use to build and maintain production backends — the integration categories mirror the areas from my experience."
         />
-        <div className="space-y-12">
+        <div className="space-y-14">
           {skillCategories.map((category) => (
             <section key={category.title}>
-              <h3 className="mb-4 font-mono text-xl font-semibold text-foreground">
-                {category.title}
-              </h3>
+              <div className="mb-5 flex items-center gap-4">
+                <h3 className="font-mono text-lg font-semibold text-foreground">
+                  {category.title}
+                </h3>
+                <span aria-hidden="true" className="h-px flex-1 bg-border" />
+                <span className="font-mono text-xs text-muted-foreground">
+                  {category.skills.length}
+                </span>
+              </div>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {category.skills.map((skill) => (
                   <SkillBadge key={skill.name} {...skill} />
