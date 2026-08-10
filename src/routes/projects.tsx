@@ -2,14 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ProjectCard } from "../components/ProjectCard";
 import { SectionHeading } from "../components/SectionHeading";
 
+const title = "Projects — Backend Developer";
+const description =
+  "Personal and commercial PHP projects: Laravel apps, WHMCS modules, infrastructure integrations and mobile side projects.";
+
 export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
   head: () => ({
     meta: [
-      { title: "Projects — PHP Developer Portfolio" },
-      { name: "description", content: "A collection of PHP projects built with Laravel, Symfony, and modern backend tooling." },
-      { property: "og:title", content: "Projects — PHP Developer Portfolio" },
-      { property: "og:description", content: "A collection of PHP projects built with Laravel, Symfony, and modern backend tooling." },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/projects" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -18,48 +22,55 @@ export const Route = createFileRoute("/projects")({
   }),
 });
 
-const projects = [
+const personalProjects = [
   {
-    title: "E-commerce API",
-    description: "A RESTful e-commerce API built with Laravel and MySQL, featuring authentication, payments, and inventory management.",
-    tags: ["Laravel", "MySQL", "REST API", "Stripe"],
+    title: "Household budget app",
+    description:
+      "A budget app with spending categories, monthly reports and a live demo. Built on Laravel and MySQL.",
+    tags: ["Laravel", "MySQL", "Reports"],
     demoUrl: "#",
     repoUrl: "#",
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task manager with real-time updates, role-based access control, and automated notifications.",
-    tags: ["Symfony", "PostgreSQL", "Docker", "Redis"],
-    demoUrl: "#",
+    title: "Mobile companion app",
+    description:
+      "A cross-platform mobile app bundling daily content and tools in one place. Built with Ionic and Vue.",
+    tags: ["Ionic", "Vue", "Capacitor"],
     repoUrl: "#",
   },
   {
-    title: "Developer Dashboard",
-    description: "An analytics dashboard for monitoring application performance, errors, and user activity across projects.",
-    tags: ["PHP", "React", "Tailwind", "Chart.js"],
-    demoUrl: "#",
+    title: "Menu Maker (WIP)",
+    description:
+      "Weekly meal planning with AI suggestions, ingredient scaling and PDF export.",
+    tags: ["Laravel", "Vue", "Inertia.js", "AI"],
     repoUrl: "#",
   },
+];
+
+const commercialWork = [
   {
-    title: "CMS Platform",
-    description: "A headless CMS with a flexible content model, GraphQL API, and multi-tenant architecture.",
-    tags: ["Laravel", "GraphQL", "PostgreSQL", "AWS"],
-    demoUrl: "#",
-    repoUrl: "#",
+    title: "WordPress automation platform",
+    description:
+      "Laravel backend of a B2B SaaS that automates WordPress management: instance provisioning, imports, Git support and onboarding flows.",
+    tags: ["Laravel", "Vue.js", "MySQL", "Docker"],
   },
   {
-    title: "Booking Engine",
-    description: "A reservation system with availability calendars, payment processing, and email confirmations.",
-    tags: ["Symfony", "MySQL", "Stripe", "Twilio"],
-    demoUrl: "#",
-    repoUrl: "#",
+    title: "Infrastructure integrations",
+    description:
+      "Integrations with hosting panels (cPanel, Plesk, DirectAdmin), DNS providers (PowerDNS, Cloudflare, Bunny), mail servers and SSL automation.",
+    tags: ["cPanel", "Plesk", "PowerDNS", "Let's Encrypt"],
   },
   {
-    title: "CLI Automation Tool",
-    description: "A command-line tool for scaffolding PHP projects, running tests, and deploying to staging environments.",
-    tags: ["PHP", "Symfony Console", "GitHub Actions", "Docker"],
-    demoUrl: "#",
-    repoUrl: "#",
+    title: "Backup and storage layer",
+    description:
+      "Local and remote backup pipelines for WordPress instances with S3, FTP, SFTP and FTPS targets.",
+    tags: ["S3", "FTP", "SFTP", "Queues"],
+  },
+  {
+    title: "WHMCS modules",
+    description:
+      "Custom billing modules: invoice sub-statuses, automated refunds, upgrades for early payments and bulk update tooling.",
+    tags: ["PHP", "WHMCS", "JavaScript", "Smarty"],
   },
 ];
 
@@ -67,14 +78,28 @@ function ProjectsPage() {
   return (
     <div className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
+        <p className="font-mono text-sm text-primary">$ ls projects/</p>
         <SectionHeading
-          title="All Projects"
-          subtitle="A collection of work that spans APIs, dashboards, automation tools, and content platforms."
+          title="Personal projects"
+          subtitle="Side projects where I try out ideas and tools outside of commercial work."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+          {personalProjects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
+        </div>
+
+        <div className="mt-20">
+          <p className="font-mono text-sm text-primary">$ ls work/</p>
+          <SectionHeading
+            title="Commercial work"
+            subtitle="Areas I own or contribute to on a live B2B product."
+          />
+          <div className="grid gap-6 sm:grid-cols-2">
+            {commercialWork.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
