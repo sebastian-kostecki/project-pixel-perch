@@ -8,11 +8,15 @@ interface SkillBadgeProps {
 
 export function SkillBadge({ name, icon: Icon, level }: SkillBadgeProps) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-border/50 bg-card p-4 transition-colors hover:border-primary/30 hover:bg-card/80">
-      {Icon && <Icon className="h-5 w-5 text-primary" />}
-      <div className="flex-1">
-        <p className="font-mono text-sm font-medium text-card-foreground">{name}</p>
-        {level && <p className="text-xs text-muted-foreground">{level}</p>}
+    <div className="panel panel-hover group flex items-center gap-3 rounded-md px-4 py-3">
+      {Icon && (
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary">
+          <Icon className="h-4 w-4" />
+        </span>
+      )}
+      <div className="min-w-0">
+        <p className="truncate font-mono text-sm font-medium text-card-foreground">{name}</p>
+        {level && <p className="truncate text-xs text-muted-foreground">{level}</p>}
       </div>
     </div>
   );

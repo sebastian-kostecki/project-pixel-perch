@@ -1,4 +1,4 @@
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, ArrowUpRight } from "lucide-react";
 
 interface SocialLinkProps {
   href: string;
@@ -13,15 +13,16 @@ export function SocialLink({ href, icon: Icon, label, value }: SocialLinkProps) 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-center gap-4 rounded-xl border border-border/50 bg-card p-5 transition-all hover:border-primary/30 hover:bg-card/80"
+      className="panel panel-hover group flex items-center gap-4 rounded-md p-5"
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm border border-primary/25 bg-primary/10 text-primary">
         <Icon className="h-5 w-5" />
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+        <p className="truncate font-mono text-sm font-medium text-card-foreground">{value}</p>
       </div>
-      <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</p>
-        <p className="font-mono text-sm font-medium text-card-foreground">{value}</p>
-      </div>
+      <ArrowUpRight className="h-4 w-4 text-muted-foreground/50 transition-colors group-hover:text-primary" />
     </a>
   );
 }
