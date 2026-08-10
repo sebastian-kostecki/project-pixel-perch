@@ -31,15 +31,17 @@ const socials = [
 
 function ContactPage() {
   return (
-    <div className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">
-        <p className="font-mono text-sm text-primary">$ ./contact.sh</p>
+    <div className="relative">
+      <div aria-hidden="true" className="gradient-hero absolute inset-x-0 top-0 h-80" />
+      <div aria-hidden="true" className="grid-lines absolute inset-x-0 top-0 h-80" />
+      <div className="relative mx-auto max-w-3xl px-4 py-24 sm:px-6 lg:px-8">
         <SectionHeading
+          index="04 / Contact"
           title="Let's talk"
-          subtitle="Interested in working together or chatting about backend? Get in touch."
+          subtitle="Interested in working together or chatting about backend? Get in touch — I usually reply within a day."
           centered
         />
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4">
           {socials.map((social) => (
             <SocialLink key={social.label} {...social} />
           ))}

@@ -24,6 +24,7 @@ export const Route = createFileRoute("/projects")({
 
 const personalProjects = [
   {
+    index: "01",
     title: "Household budget app",
     description:
       "A budget app with spending categories, monthly reports and a live demo. Built on Laravel and MySQL.",
@@ -32,6 +33,7 @@ const personalProjects = [
     repoUrl: "#",
   },
   {
+    index: "02",
     title: "Mobile companion app",
     description:
       "A cross-platform mobile app bundling daily content and tools in one place. Built with Ionic and Vue.",
@@ -39,7 +41,9 @@ const personalProjects = [
     repoUrl: "#",
   },
   {
-    title: "Menu Maker (WIP)",
+    index: "03",
+    title: "Menu Maker",
+    status: "WIP",
     description:
       "Weekly meal planning with AI suggestions, ingredient scaling and PDF export.",
     tags: ["Laravel", "Vue", "Inertia.js", "AI"],
@@ -49,24 +53,28 @@ const personalProjects = [
 
 const commercialWork = [
   {
+    index: "01",
     title: "WordPress automation platform",
     description:
       "Laravel backend of a B2B SaaS that automates WordPress management: instance provisioning, imports, Git support and onboarding flows.",
     tags: ["Laravel", "Vue.js", "MySQL", "Docker"],
   },
   {
+    index: "02",
     title: "Infrastructure integrations",
     description:
       "Integrations with hosting panels (cPanel, Plesk, DirectAdmin), DNS providers (PowerDNS, Cloudflare, Bunny), mail servers and SSL automation.",
     tags: ["cPanel", "Plesk", "PowerDNS", "Let's Encrypt"],
   },
   {
+    index: "03",
     title: "Backup and storage layer",
     description:
       "Local and remote backup pipelines for WordPress instances with S3, FTP, SFTP and FTPS targets.",
     tags: ["S3", "FTP", "SFTP", "Queues"],
   },
   {
+    index: "04",
     title: "WHMCS modules",
     description:
       "Custom billing modules: invoice sub-statuses, automated refunds, upgrades for early payments and bulk update tooling.",
@@ -76,26 +84,27 @@ const commercialWork = [
 
 function ProjectsPage() {
   return (
-    <div className="px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        <p className="font-mono text-sm text-primary">$ ls projects/</p>
+    <div className="relative">
+      <div aria-hidden="true" className="gradient-hero absolute inset-x-0 top-0 h-80" />
+      <div className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
         <SectionHeading
+          index="02 / Projects"
           title="Personal projects"
           subtitle="Side projects where I try out ideas and tools outside of commercial work."
         />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {personalProjects.map((project) => (
             <ProjectCard key={project.title} {...project} />
           ))}
         </div>
 
-        <div className="mt-20">
-          <p className="font-mono text-sm text-primary">$ ls work/</p>
+        <div className="mt-24">
           <SectionHeading
+            index="02.1 / Work"
             title="Commercial work"
             subtitle="Areas I own or contribute to on a live B2B product."
           />
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2">
             {commercialWork.map((project) => (
               <ProjectCard key={project.title} {...project} />
             ))}
