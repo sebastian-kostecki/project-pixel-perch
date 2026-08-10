@@ -1,16 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { SectionHeading } from "../components/SectionHeading";
 import { SocialLink } from "../components/SocialLink";
+
+const title = "Contact — Backend Developer";
+const description =
+  "Interested in working together or chatting about backend development? Reach out on LinkedIn, GitHub or by e-mail.";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: "Contact — PHP Developer Portfolio" },
-      { name: "description", content: "Get in touch for freelance, full-time, or collaboration opportunities." },
-      { property: "og:title", content: "Contact — PHP Developer Portfolio" },
-      { property: "og:description", content: "Get in touch for freelance, full-time, or collaboration opportunities." },
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/contact" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -20,19 +24,19 @@ export const Route = createFileRoute("/contact")({
 });
 
 const socials = [
-  { href: "https://github.com", icon: Github, label: "GitHub", value: "github.com/phpdeveloper" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/phpdeveloper" },
-  { href: "https://twitter.com", icon: Twitter, label: "Twitter", value: "@phpdeveloper" },
-  { href: "mailto:hello@example.com", icon: Mail, label: "Email", value: "hello@example.com" },
+  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/your-profile" },
+  { href: "https://github.com", icon: Github, label: "GitHub", value: "github.com/your-username" },
+  { href: "mailto:hello@example.com", icon: Mail, label: "E-mail", value: "hello@example.com" },
 ];
 
 function ContactPage() {
   return (
     <div className="px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
+        <p className="font-mono text-sm text-primary">$ ./contact.sh</p>
         <SectionHeading
-          title="Get in Touch"
-          subtitle="I'm currently open to new opportunities. Whether you have a project, a role, or just want to connect, I'd love to hear from you."
+          title="Let's talk"
+          subtitle="Interested in working together or chatting about backend? Get in touch."
           centered
         />
         <div className="grid gap-4 sm:grid-cols-2">
